@@ -24,7 +24,6 @@ const ChatroomPage: React.FC = () => {
   const chatBottomRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Naive auto-scroll to latest message
     if (chatBottomRef.current) {
       chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -49,7 +48,8 @@ const ChatroomPage: React.FC = () => {
     setIsTyping(false);
   };
   
-  if (!chatroom) {
+  // This is the critical change.
+  if (!chatroom || !chatId) {
     return (
       <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
         Loading or chatroom not found...
@@ -63,6 +63,7 @@ const ChatroomPage: React.FC = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col-reverse">
         <div ref={chatBottomRef} />
         {isTyping && <TypingIndicator />}
+        {/* Now `chatId` is guaranteed to be a string */}
         <MessageList chatroomId={chatId} />
       </div>
       <ChatInput onSendMessage={handleSendMessage} />
