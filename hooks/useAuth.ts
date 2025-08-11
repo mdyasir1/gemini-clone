@@ -9,9 +9,9 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (!isLoggedIn && pathname.startsWith('/dashboard')) {
-      router.push('/login');
+      router.push('/auth/signup');
     }
-    if (isLoggedIn && (pathname === '/login' || pathname === '/signup')) {
+    if (isLoggedIn && (pathname === '/auth/login' || pathname === '/auth/signup')) {
       router.push('/dashboard');
     }
   }, [isLoggedIn, pathname, router]);

@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   const handleLogout = () => {
     logout();
     toast.success('Logged out successfully!');
-    router.push('/login');
+    router.push('/auth/login');
   };
 
   return (
