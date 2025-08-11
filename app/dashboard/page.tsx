@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useChatStore } from '@/store/chatStore';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useRouter } from 'next/navigation';

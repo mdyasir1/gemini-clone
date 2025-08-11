@@ -10,10 +10,11 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { useAuthStore } from '@/store/authStore';
 import toast from 'react-hot-toast';
+import { Country } from '@/utils/types';
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
-  const [countries, setCountries] = useState<any[]>([]);
+  const [countries, setCountries] = useState<Country[]>([]);
   const [isSendingOtp, setIsSendingOtp] = useState(false);
   const login = useAuthStore((state) => state.login);
 
@@ -79,7 +80,7 @@ const LoginPage: React.FC = () => {
           </Button>
         </form>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-          We'll send you a one-time password to verify your account.
+          We&apos;ll send you a one-time password to verify your account.
         </p>
       </div>
     </div>

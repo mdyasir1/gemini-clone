@@ -32,3 +32,16 @@ export const loginSchema = z.object({
 
 export type OtpFormData = z.infer<typeof otpSchema>;
 export type LoginFormData = z.infer<typeof loginSchema>;
+
+// utils/types.ts
+export type Country = {
+  name: string;
+  code: string;
+  cca2: string;
+};
+
+export interface RawCountry {
+  name: { common: string };
+  cca2: string;
+  idd: { root: string; suffixes?: string[] };
+}

@@ -1,4 +1,5 @@
-import { Message } from './types';
+import { Message, RawCountry } from './types';
+import { Country } from './types';
 
 export const getFakeAiReply = (message: string): Promise<Message> => {
   return new Promise((resolve) => {
@@ -14,14 +15,19 @@ export const getFakeAiReply = (message: string): Promise<Message> => {
   });
 };
 
+// utils/helpers.ts
 export const getCountryData = async () => {
   const response = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2,idd');
-  const data = await response.json();
-  return data.map((country: any) => ({
+  const data: RawCountry[] = await response.json();
+  return data.map((country) => ({ // Now `country` is typed as `RawCountry`
     name: country.name.common,
     code: country.idd.root + (country.idd.suffixes?.[0] || ''),
     cca2: country.cca2,
-  })).sort((a: any, b: any) => a.name.localeCompare(b.name));
+  })).sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+};
+
+export const customImageLoader = ({ src }: { src: string }) => {
+  return src;
 };
 
 export const formatTimestamp = (timestamp: string): string => {
