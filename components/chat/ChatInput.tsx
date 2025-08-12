@@ -37,7 +37,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
 
   return (
     <div className="p-4 bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-      <form onSubmit={handleSubmit} className="flex space-x-2">
+      <form onSubmit={handleSubmit} className="flex space-x-2 max-h-screen max-w-screen">
         <input
           type="file"
           ref={fileInputRef}
@@ -48,7 +48,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className=" text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
         >
           🖼️
         </button>
@@ -57,7 +57,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Message Gemini..."
-          className="flex-1 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="flex-1 px-4 py-2 w-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <button
           type="submit"
