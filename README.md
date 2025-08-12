@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gemini Chat App
 
-## Getting Started
+This project is a conversational AI chat application built to simulate a Gemini-style interface. It features a modern, responsive design and includes core functionalities like authentication, chat management, and a dynamic chat interface.
 
-First, run the development server:
+[Live Demo Link ([Gemini](https://geminiclonetask.vercel.app/))]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Setup & Run Instructions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  **Clone the repository:**
+    ```bash
+    git clone(https://github.com/mdyasir1/gemini-clone.git)
+    cd gemini-clone
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Folder Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project uses the new Next.js App Router.
 
-## Learn More
+-   `app/`: Contains the main application routes, including `(auth)` for login/signup and `(dashboard)` for the main chat interface.
+-   `components/`: Reusable React components are organized by feature (e.g., `auth`, `dashboard`, `ui`, `chat`).
+-   `hooks/`: Custom hooks for reusable logic, such as debouncing and infinite scroll.
+-   `store/`: Zustand stores for global state management (`authStore`, `chatStore`).
+-   `utils/`: Helper functions, types, and Zod schemas.
 
-To learn more about Next.js, take a look at the following resources:
+## Implementation Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Throttling
+Throttling is implemented via a `throttle` helper function in `utils/helpers.ts`. Although not explicitly used in the final UI logic (as `setTimeout` and `useDebounce` are sufficient for this assignment), it's included as a core utility a developer might build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Pagination & Infinite Scroll
+-   **Client-side pagination** is handled in `components/chat/MessageList.tsx` using a custom `useInfiniteScroll` hook.
+-   The hook manages the number of messages to display, starting with the last 20 and loading more as the user scrolls up.
+-   The `loadingRef` is a `ref` attached to a placeholder element, and an `IntersectionObserver` is used to detect when this element comes into view, triggering the loading of older messages.
 
-## Deploy on Vercel
+### Validation
+-   **Form validation** is implemented with `React Hook Form` and `Zod`.
+-   The validation schemas are defined in `utils/schemas.ts`.
+-   This ensures that inputs like phone numbers and OTPs adhere to specific formats before submission.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Deployment
+This project is deployment-ready for platforms like Vercel. Simply connect your repository and Vercel will handle the rest.

@@ -27,7 +27,7 @@ export const otpSchema = z.object({
 
 export const loginSchema = z.object({
   countryCode: z.string().min(1, "Please select a country code"),
-  phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
+  phoneNumber: z.string().regex(/^\d{10}$/, "Please enter a valid number"),
 });
 
 export type OtpFormData = z.infer<typeof otpSchema>;

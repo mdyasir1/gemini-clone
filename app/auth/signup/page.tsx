@@ -1,15 +1,16 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginFormData } from '@/utils/types';
-import { getCountryData } from '@/utils/helpers';
-import Input from '@/components/ui/Input';
-import Button from '@/components/ui/Button';
-import { useAuthStore } from '@/store/authStore';
-import toast from 'react-hot-toast';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginFormData } from "@/utils/types";
+import { getCountryData } from "@/utils/helpers";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
+import Link from "next/link";
 
 // Define the type for the country data fetched from the API.
 // This helps to avoid the 'any' type.
@@ -40,8 +41,8 @@ const SignupPage: React.FC = () => {
         const data = await getCountryData();
         setCountries(data);
       } catch (error) {
-        console.error('Failed to fetch country data:', error);
-        toast.error('Failed to load country codes.');
+        console.error("Failed to fetch country data:", error);
+        toast.error("Failed to load country codes.");
       }
     };
     fetchCountries();
@@ -53,15 +54,15 @@ const SignupPage: React.FC = () => {
     // Simulate API call with a delay.
     setTimeout(() => {
       setIsSendingOtp(false);
-      toast.success('OTP sent to your number!');
+      toast.success("OTP sent to your number!");
       const user = {
-        id: '1',
-        email: 'user@example.com',
+        id: "1",
+        email: "user@example.com",
         countryCode: data.countryCode,
       };
       // For this project, we'll directly log in after "sending" the OTP.
       login(user);
-      router.push('/dashboard');
+      router.push("/dashboard");
     }, 2000);
   };
 
@@ -77,7 +78,7 @@ const SignupPage: React.FC = () => {
               Country Code
             </label>
             <select
-              {...register('countryCode')}
+              {...register("countryCode")}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="">Select a country</option>
@@ -96,15 +97,19 @@ const SignupPage: React.FC = () => {
           <Input
             label="Phone Number"
             type="tel"
-            {...register('phoneNumber')}
+            {...register("phoneNumber")}
             error={errors.phoneNumber?.message}
           />
           <Button type="submit" isLoading={isSendingOtp}>
-            {isSendingOtp ? 'Sending OTP...' : 'Sign up'}
+            {isSendingOtp ? "Sending OTP..." : "Sign up"}
           </Button>
+          <p className="text-center">
+            Already have an account ? <Link href="/auth/login" className="underline">Login</Link>
+          </p>
         </form>
+
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-          We`&apos;`ll send you a one-time password to verify your account.
+          We&apos;ll send you a one-time password to verify your account.
         </p>
       </div>
     </div>

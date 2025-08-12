@@ -11,6 +11,7 @@ import Button from '@/components/ui/Button';
 import { useAuthStore } from '@/store/authStore';
 import toast from 'react-hot-toast';
 import { Country } from '@/utils/types';
+import Link from 'next/link';
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -40,12 +41,11 @@ const LoginPage: React.FC = () => {
       router.push('/dashboard');
     }, 2000);
   };
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-          Login or Sign Up
+          Sign Up
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -76,8 +76,11 @@ const LoginPage: React.FC = () => {
             error={errors.phoneNumber?.message}
           />
           <Button type="submit" isLoading={isSendingOtp}>
-            {isSendingOtp ? "Sending OTP..." : "Login / Signup"}
+            {isSendingOtp ? "Sending OTP..." : "Sign Up"}
           </Button>
+          <p className="text-center">
+            Not have an account ? <Link href="/auth/signup" className="underline">Signup</Link>
+          </p>
         </form>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
           We&apos;ll send you a one-time password to verify your account.
