@@ -48,3 +48,17 @@ Throttling is implemented via a `throttle` helper function in `utils/helpers.ts`
 
 ### Deployment
 This project is deployment-ready for platforms like Vercel. Simply connect your repository and Vercel will handle the rest.
+
+## Screenshots
+
+### Login Page
+![Login Page](./public/login.jpg)
+
+### Signup Page
+![Signup Page](./public/signup.jpg)
+
+### Dashboard
+![Dashboard](./public/dashboard.jpg)
+
+### Chat Interface
+![Chat Interface](./public/chat.jpg)

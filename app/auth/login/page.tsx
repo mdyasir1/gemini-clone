@@ -45,7 +45,7 @@ const LoginPage: React.FC = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-          Sign Up
+          Login
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -76,7 +76,7 @@ const LoginPage: React.FC = () => {
             error={errors.phoneNumber?.message}
           />
           <Button type="submit" isLoading={isSendingOtp}>
-            {isSendingOtp ? "Sending OTP..." : "Sign Up"}
+            {isSendingOtp ? "Sending OTP..." : "Login"}
           </Button>
           <p className="text-center">
             Not have an account ? <Link href="/auth/signup" className="underline">Signup</Link>
