@@ -51,14 +51,14 @@ This project is deployment-ready for platforms like Vercel. Simply connect your 
 
 ## Screenshots
 
-### Login Page
-![Login Page](./public/login.jpg)
+### Dark Theme
+![Dark Theme](./public/dashboard%20dark.jpg)
 
-### Signup Page
-![Signup Page](./public/signup.jpg)
+### Light Theme
+![Light Theme](./public/dashboard%20light.jpg)
 
-### Dashboard
-![Dashboard](./public/dashboard.jpg)
-
+### Responsive Design
+![responsive design](./public/responsive1.jpg)
+![responsive design](./public/responsive2.jpg)
 ### Chat Interface
 ![Chat Interface](./public/chat.jpg)
