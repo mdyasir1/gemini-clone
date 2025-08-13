@@ -35,9 +35,9 @@ const DashboardPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-gray-100 dark:bg-gray-900">
+    <div className="flex flex-col h-full">
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl font-bold">
           Chats
         </h1>
         <input
@@ -45,7 +45,7 @@ const DashboardPage: React.FC = () => {
           placeholder="Search chats..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="mt-4 w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="mt-4 w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700  focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <button
           onClick={handleCreateChat}
@@ -55,8 +55,8 @@ const DashboardPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
-        <ul className="p-4 space-y-2">
+      <div className="flex-1 overflow-y-auto ">
+        <ul className="p-4 space-y-2 flex flex-col gap-1">
           {filteredChatrooms.length > 0 ? (
             filteredChatrooms.map((room) => (
               <ChatListItem key={room.id} chatroom={room} />

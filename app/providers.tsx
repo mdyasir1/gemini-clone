@@ -1,17 +1,10 @@
-'use client';
+"use client";
 
-import { ThemeProvider } from 'next-themes';
-import { ReactNode, useEffect, useState } from 'react';
-import Navbar from '@/components/Navbar';
-import { useAuthStore } from '@/store/authStore';
-import { usePathname } from 'next/navigation';
+import { ThemeProvider } from "next-themes";
+import { ReactNode, useEffect, useState } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
-  const { isLoggedIn } = useAuthStore();
-  const pathname = usePathname();
-  
-  const showNavbar = isLoggedIn && pathname.startsWith('/dashboard');
 
   useEffect(() => {
     setMounted(true);
@@ -21,7 +14,6 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-      {showNavbar && <Navbar />}
       {children}
     </ThemeProvider>
   );

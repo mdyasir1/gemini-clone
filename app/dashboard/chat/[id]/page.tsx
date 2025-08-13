@@ -10,7 +10,6 @@ import { getFakeAiReply } from '@/utils/helpers';
 import { Message } from '@/utils/types';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/hooks/useAuth';
-import ChatroomHeader from '@/components/chat/ChatroomHeader';
 
 const ChatroomPage: React.FC = () => {
   const { id } = useParams();
@@ -58,8 +57,7 @@ const ChatroomPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-gray-50 dark:bg-gray-900">
-      <ChatroomHeader chatroom={chatroom} />
+    <div className="flex flex-col justify-between h-full">
       <div className="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col-reverse">
         <div ref={chatBottomRef} />
         {isTyping && <TypingIndicator />}

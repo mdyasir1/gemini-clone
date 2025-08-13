@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useAuthStore } from '@/store/authStore';
+import { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useAuthStore } from "@/store/authStore";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -8,11 +8,14 @@ export const useAuth = () => {
   const { isLoggedIn } = useAuthStore();
 
   useEffect(() => {
-    if (!isLoggedIn && pathname.startsWith('/dashboard')) {
-      router.push('/auth/signup');
+    if (!isLoggedIn && pathname.startsWith("/dashboard")) {
+      router.push("/auth/login");
     }
-    if (isLoggedIn && (pathname === '/auth/login' || pathname === '/auth/signup')) {
-      router.push('/dashboard');
+    if (
+      isLoggedIn &&
+      (pathname === "/auth/login" || pathname === "/auth/signup")
+    ) {
+      router.push("/dashboard");
     }
   }, [isLoggedIn, pathname, router]);
 

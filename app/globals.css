@@ -40,11 +40,14 @@ html.dark {
 
 /* Smooth theme transitions and base layout */
 * {
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease,
+    border-color 150ms ease;
 }
 
-html, body, #__next {
-  min-height: 100dvh;
+html,
+body,
+#__next {
+  min-height: 100vh;
 }
 
 body {

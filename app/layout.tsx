@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { Providers } from './providers';
+import Navbar from '@/components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,17 +11,18 @@ export const metadata = {
   description: 'A conversational AI chat application built with Next.js and Tailwind CSS.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+export default function RootLayout({ 
+  children, 
+}: { 
+  children: React.ReactNode; 
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
           <div className="flex flex-col h-screen">
-            {children}
+            <Navbar />
+            <main className="flex-1 overflow-y-auto">{children}</main>
           </div>
           <Toaster position="bottom-right" />
         </Providers>
