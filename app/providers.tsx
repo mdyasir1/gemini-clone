@@ -20,7 +20,7 @@ export function Providers({ children }: { children: ReactNode }) {
   if (!mounted) return null;
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
       {showNavbar && <Navbar />}
       {children}
     </ThemeProvider>
